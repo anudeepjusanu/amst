@@ -1,0 +1,8 @@
+{
+  "name": "ServiceNow Test",
+  "version": "1.0.0",
+  "description": "ServiceNow test",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}

@@ -1,0 +1,24 @@
+<div class="table-container">
+    <div class="table">
+        <div class="table-header">
+            <div class="header-row table-row">
+                <div class="header-col table-cell" ondragstart="" ng-repeat="col in columns track by $index" ng-class="{'col-1': $index == 0}">
+                    <a class="header-cell" ng-click="sort(col.name);" draggable="true">
+			            {{col.name}} 
+			            <span ng-show="sortType == '{{col.name}}' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == '{{col.name}}' && sortReverse" class="fa fa-caret-up"></span>
+          			</a>
+                </div>
+                <div class="header-col table-cell">Actions</div>
+            </div>
+        </div>
+        <div class="table-body">
+            <div class="body-row table-row" ng-repeat="data in sampleData | orderBy:sortType:sortReverse track by $index ">
+            	<div class="body-col table-cell" ng-repeat="col in columns">
+            		{{data[col.name]}}
+            	</div>
+                <div class="body-col table-cell">Edit</div>
+            </div>
+        </div>
+    </div>
+</div>
