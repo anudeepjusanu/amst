@@ -2,22 +2,20 @@
     <div class="table">
         <div class="table-header">
             <div class="header-row table-row" id="sortable">
-                <div class="header-col table-cell ui-widget-header resizable{{$index+1}} ui-state-default" ng-repeat="col in columns track by $index" ng-class="{'col-1': $index == 0}">
-                    <a class="header-cell" ng-click="sort(col.name);" draggable="true">
-			            {{col.name}} 
-			            <span ng-show="sortType == '{{col.name}}' && !sortReverse" class="fa fa-caret-down"></span>
-			            <span ng-show="sortType == '{{col.name}}' && sortReverse" class="fa fa-caret-up"></span>
+                <div class="header-col table-cell ui-widget-header resizable{{$index+1}} ui-state-default" ng-repeat="col in columns | orderBy: 'position' track by $index" ng-class="{'col-1': $index == 0}" id="{{col.position}}">
+                    <a class="header-cell" ng-click="sort(col.name);">
+			            {{col.name}} {{col.position}}
+			            <span ng-show="sortColumn == '{{col.name}}' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortColumn == '{{col.name}}' && sortReverse" class="fa fa-caret-up"></span>
           			</a>
                 </div>
-                <div id="" class="header-col table-cell ui-widget-header resizable0">Actions</div>
             </div>
         </div>
         <div class="table-body">
-            <div class="body-row table-row" ng-repeat="data in sampleData | orderBy:sortType:sortReverse">
-            	<div class="body-col table-cell ui-widget-content also{{$index+1}}" ng-repeat="col in columns track by $index">
-            		{{data[col.name]}}
-            	</div>
-                <div class="body-col table-cell ui-widget-content also0">Edit</div>
+            <div class="body-row table-row" ng-repeat="data in sampleData | orderBy:sortColumn:sortReverse">
+                <div class="body-col table-cell ui-widget-content connectedCol{{$index+1}}" ng-repeat="col in columns | orderBy: 'position' track by $index">
+                    {{data[col.name]}}
+                </div>
             </div>
         </div>
     </div>
