@@ -5,7 +5,7 @@ body {
 
 .table-container {
     overflow: auto;
-    width: 700px;
+    /*width: 700px;*/
     margin: 0 auto;
 }
 
@@ -33,7 +33,7 @@ body {
 .table .table-row .table-cell {
     display: inline-block;
     width: 150px;
-    max-width: 150px;
+    /*max-width: 150px;*/
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

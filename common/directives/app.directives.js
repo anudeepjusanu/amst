@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .directive('gridTable', [function() {
+        .directive('gridTable', ['$timeout', function($timeout) {
             return {
                 restrict: 'EA',
                 templateUrl: 'common/directives/partials/gridTable.html',
@@ -68,19 +68,32 @@
                     for (var key in colObj) {
                         scope.columns.push({
                             "name": key,
-                            "order":i++
+                            "order": i++
                         });
                     }
+                    //scope.sampleData = dumpData;
 
-                    for (var i = 0; i < 10; i++) {
-                        scope.sampleData = scope.sampleData.concat(dumpData);
+                    for (var i = 0; dumpData.length < 10; i++) {
+                      dumpData.position = i;
+                      scope.sampleData.push(dumpData);  
                     }
 
-                    scope.sort = function(column){
-                        scope.sortType = column; 
+                    scope.sort = function(column) {
+                        scope.sortType = column;
                         scope.sortReverse = !scope.sortReverse;
                     }
+                    $timeout(function() {
+                        for (var i = 0; i <= scope.columns.length; i++) {
+                            $(".resizable" + i).resizable({
+                                alsoResize: ".also" + i
+                            });
+                            $(".also" + i).resizable();
+                        }
+                        $("#sortable").sortable();
+                        $("#sortable").disableSelection();
+                    });
                 }
+
             };
         }])
 
