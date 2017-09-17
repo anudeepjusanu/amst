@@ -3,23 +3,63 @@
 
 <head>
     <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/app.css">
     <link rel="stylesheet" type="text/css" href="styles/jquery-ui.min.css">
     <script src="https://use.fontawesome.com/b6a7030069.js"></script>
 </head>
 
 <body ng-app="app">
-
-	<!-- main -->
-	<main ui-view></main>
-
-	<!-- external scripts -->
+    <header ng-controller="HeaderController as vm">
+        <div class="top-nav">
+            <div class="row">
+                <div id="logo">Webinar Events</div>
+                <nav>
+                    <div class="header-menu">
+                        <ul>
+                            <li class="auth-link">
+                                <a class="auth">Login</a>
+                                <div class="login-box">
+                                    <form name="loginForm">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" ng-model="vm.user.username" placeholder="username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" ng-model="vm.user.password" placeholder="password">
+                                        </div>
+                                        <div class="login-btn">
+                                        	<button class="btn btn-primary right">Login</button>
+                                        	<div class="clear"></div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header-wrapper">
+            <div class="bg"></div>
+            <div class="row">
+                <div id="header">
+                    <div class="header-tagline">
+                        <h1 class="tagline-text">We Simplify Your Way To International Market</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- main -->
+    <main ui-view></main>
+    <!-- external scripts -->
     <script src="scripts/libs/jquery.min.js"></script>
     <script src="scripts/libs/jquery-ui.min.js"></script>
     <script src="scripts/libs/angular.min.js"></script>
     <script src="scripts/libs/angular-sanitize.min.js"></script>
     <script src="scripts/libs/angular-ui-router.min.js"></script>
-
     <!-- application scripts -->
     <script src="scripts/app.js"></script>
     <script src="common/directives/app.directives.js"></script>

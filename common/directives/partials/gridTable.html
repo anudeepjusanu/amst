@@ -3,18 +3,36 @@
         <div class="table-header">
             <div class="header-row table-row" id="sortable">
                 <div class="header-col table-cell ui-widget-header resizable{{$index+1}} ui-state-default" ng-repeat="col in columns | orderBy: 'position' track by $index" ng-class="{'col-1': $index == 0}" id="{{col.position}}">
-                    <a class="header-cell" ng-click="sort(col.name);">
-			            {{col.name}} {{col.position}}
-			            <span ng-show="sortColumn == '{{col.name}}' && !sortReverse" class="fa fa-caret-down"></span>
-			            <span ng-show="sortColumn == '{{col.name}}' && sortReverse" class="fa fa-caret-up"></span>
+                    <a class="header-cell" ng-click="sort(col.id);">
+			            {{col.id}}
+			            <span ng-show="sortColumn == '{{col.id}}' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortColumn == '{{col.id}}' && sortReverse" class="fa fa-caret-up"></span>
+          			</a>
+                </div>
+                <div class="header-col table-cell">
+                    <a class="header-cell" ">
+			            Actions
           			</a>
                 </div>
             </div>
         </div>
-        <div class="table-body">
-            <div class="body-row table-row" ng-repeat="data in sampleData | orderBy:sortColumn:sortReverse">
-                <div class="body-col table-cell ui-widget-content connectedCol{{$index+1}}" ng-repeat="col in columns | orderBy: 'position' track by $index">
-                    {{data[col.name]}}
+        <div class="table-body ">
+            <div class="body-row table-row " ng-repeat="data in sampleData ">
+                <div class="body-col table-cell ui-widget-content connectedCol{{$index+1}} " ng-repeat="col in columns | orderBy: 'position' track by $index ">
+                    <span ng-if="!data.isEdit ">
+                    	{{data[col.id]}}
+                   	</span>
+                    <span ng-if="data.isEdit " ng-switch on="col.inputType ">
+                    	<select ng-switch-when="select " ng-model="data[col.id] " ng-options="item as item for item in col.items "></select>
+                    	<textarea ng-switch-when="textarea" rows="3" cols="50" ng-model="data[col.id]">
+						</textarea>
+						<input type="date" ng-switch-when="date" ng-model="data[col.id]">
+                    	<input ng-switch-default type="text" ng-model="data[col.id]">
+                    </span>
+                </div>
+                <div class="body-col table-cell ">
+                	<span ng-if="!data.isEdit "><button ng-click="edit(data) ">Edit</button> <button>Delete</button></span>
+                	<span ng-if="data.isEdit "><button ng-click="save(data) ">Save</button> <button ng-click="cancel(data, $index) ">Cancel</button></span>
                 </div>
             </div>
         </div>
