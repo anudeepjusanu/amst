@@ -28,10 +28,9 @@
                                             <input class="form-control" type="password" ng-model="vm.user.password" placeholder="password">
                                         </div>
                                         <div class="login-btn">
-                                        	<button class="btn btn-primary right">Login</button>
-                                        	<div class="clear"></div>
+                                            <button class="btn btn-primary right" ng-click="vm.login()">Login</button>
+                                            <div class="clear"></div>
                                         </div>
-                                        
                                     </form>
                                 </div>
                             </li>
@@ -54,6 +53,17 @@
     </header>
     <!-- main -->
     <main ui-view></main>
+    <footer id="footer">
+        <div class="content">
+            <div class="baseline">
+                <div style="margin-top:7px">
+                    Developed by: Anudeep
+					Contact information: anudeep.gmr@gmail.com.
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </footer>
     <!-- external scripts -->
     <script src="scripts/libs/jquery.min.js"></script>
     <script src="scripts/libs/jquery-ui.min.js"></script>

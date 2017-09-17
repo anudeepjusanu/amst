@@ -8,7 +8,10 @@
 
     function HeaderController(){
         var vm = this;
-        console.log("here");
+        this.user = {
+            username: '',
+            password: ''
+        }
     }
 
     function HomeController($window) {

@@ -29,8 +29,8 @@ ul {
     margin: 0 auto;
 }
 
-.right{
-	float: right;
+.right {
+    float: right;
 }
 
 .clear {
@@ -58,8 +58,8 @@ ul {
     border-radius: 4px;
 }
 
-.btn-primary{
-	background: #039be5;
+.btn-primary {
+    background: #039be5;
     color: #fff;
 }
 
@@ -182,12 +182,34 @@ header .header-menu a.auth {
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-.login-btn{
-	margin-right: 25px;
+.login-btn {
+    margin-right: 25px;
 }
 
-header .header-menu .auth-link:hover > .login-box {
+header .header-menu .auth-link:hover>.login-box {
     display: block;
+}
+
+#footer {
+    position: relative;
+    width: 100%;
+    overflow-y: hidden;
+    background-color: #2d3f51;
+    background-image: none;
+    background-repeat: repeat-all;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    text-transform: normal;
+}
+#footer .content {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.main-container {
+    border: 1px solid #999;
 }
 
 .table-container {
@@ -198,7 +220,6 @@ header .header-menu .auth-link:hover > .login-box {
 
 .table {
     display: table;
-    border-left: 2px solid #ccc;
 }
 
 .table .table-row {
